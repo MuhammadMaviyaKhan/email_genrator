@@ -1,8 +1,14 @@
+const resolveWsOrigin = (): string => {
+  if (typeof window === 'undefined') return ''
+  const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
+  return `${protocol}://${window.location.host}`
+}
+
 export const API_BASE_URL =
-  (import.meta.env.VITE_API_BASE_URL as string) || 'http://localhost:8000/api/v1'
+  (import.meta.env.VITE_API_BASE_URL as string) || '/api/v1'
 
 export const WEBSOCKET_URL =
-  (import.meta.env.VITE_WS_URL as string) || 'ws://localhost:8000/api/v1'
+  (import.meta.env.VITE_WS_URL as string) || `${resolveWsOrigin()}/api/v1`
 
 export const STORAGE_KEYS = {
   TOKEN: 'tempmail_token',

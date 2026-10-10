@@ -77,7 +77,7 @@ app = FastAPI(
 if settings.ENVIRONMENT == "production":
     app.add_middleware(
         TrustedHostMiddleware,
-        allowed_hosts=["tempmail.pro", "*.tempmail.pro", "localhost"],
+        allowed_hosts=["tempmail.pro", "*.tempmail.pro", "localhost", "*.vercel.app"],
     )
 
 app.add_middleware(
